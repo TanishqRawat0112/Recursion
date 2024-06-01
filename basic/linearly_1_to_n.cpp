@@ -13,12 +13,11 @@ void print_linearly1(int start,int n){
 }
 
 void print_linearly2(int n){
-    if(n==0){
+    if(n<1){
         return;
     }
-    n--;
-    print_linearly2(n);
-    cout<<n+1<<endl;
+    print_linearly2(n-1);
+    cout<<n<<endl;
 }
  
 int main(){
@@ -26,7 +25,7 @@ int main(){
     cout<<"Enter the number : ";
     cin>>n;
 
-    print_linearly1(1,n);
+    // print_linearly1(1,n);
     cout<<"Other way to achieve that : "<<endl;
     print_linearly2(n);
 return 0;
