@@ -104,14 +104,15 @@ int main(){
     vector<vector<int> > answer;
     int count=subsequence_sum_equals_k4(arr,0,n,k,0,answer,list);
     cout<<"The number of subsequences are : "<<count<<endl;
-    // subsequence_sum_equals_k3(arr,0,n,k,0,answer,list);
+    
+    subsequence_sum_equals_k3(arr,0,n,k,0,answer,list);
 
-    // for(auto it:answer){
-    //     for(auto i:it){
-    //         cout<<i<<" ";
-    //     }
-    //     cout<<endl;
-    // }
+    for(auto it:answer){
+        for(auto i:it){
+            cout<<i<<" ";
+        }
+        cout<<endl;
+    }
 
 return 0;
 }
