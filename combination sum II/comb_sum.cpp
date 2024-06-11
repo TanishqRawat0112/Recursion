@@ -1,24 +1,24 @@
 #include<iostream>
-#include <vector>
+#include<vector>
+#include<set>
 using namespace std;
 
-void combination_sum(int arr[],int size,int index,int target,int sum,vector<int> &list,vector<vector<int> >&ans){
+void combination_sum(int arr[],int size,int index,int target,int sum,vector<int>&list,set<vector<int> >&ans){
     if(index>size || sum>target){
         if(sum==target){
-            ans.push_back(list);
+            ans.insert(list);
         }
         return;
     }
     if(sum==target){
-        ans.push_back(list);
+        ans.insert(list);
         return;
     }
-
-    list.push_back(arr[index]);
-    combination_sum(arr,size,index,target,sum+arr[index],list,ans);
-    list.pop_back();
-    combination_sum(arr,size,index+1,target,sum,list,ans);
-
+        list.push_back(arr[index]);
+        combination_sum(arr,size,index+1,target,sum+arr[index],list,ans);
+        list.pop_back();
+    
+        combination_sum(arr,size,index+1,target,sum,list,ans);
 }
  
 int main(){
@@ -36,8 +36,12 @@ int main(){
     cin>>target;
 
     vector<int >list;
-    vector<vector<int> > ans;
+    set<vector<int> > ans;
+
     combination_sum(arr,n-1,0,target,0,list,ans);
+
+    cout<<"Size of the set is : ";
+    cout<<ans.size()<<endl;
 
     for(vector<int > it: ans){
         for(int i:it){
@@ -45,7 +49,5 @@ int main(){
         }
         cout<<endl;
     }
-
-
 return 0;
 }
