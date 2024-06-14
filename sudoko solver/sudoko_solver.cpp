@@ -38,8 +38,6 @@ bool solve(int sudoko_board[9][9]){
     return true;
 }
 
-
- 
 int main(){
     int sudoko_board[9][9];
     cout<<"Enter the sudoko Board(Enter 0 where the board is empty) : ";
