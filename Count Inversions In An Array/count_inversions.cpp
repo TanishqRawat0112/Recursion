@@ -2,10 +2,9 @@
 #include<vector>
 using namespace std;
 
-int counter=0;
-
-void merge(int arr[],int low,int mid,int high){
+int merge(int arr[],int low,int mid,int high){
     vector<int>temp;
+    int counter=0;
     int left=low;
     int right=mid+1;
 
@@ -33,17 +32,21 @@ void merge(int arr[],int low,int mid,int high){
     for(int i=low;i<=high;i++){
         arr[i]=temp[i-low];
     }
+
+    return counter;
 }
 
-void merge_sort(int arr[],int low,int high){
+int merge_sort(int arr[],int low,int high){
+    int counter=0;
     if(low>=high){
-        return;
+        return counter;
     }
     int mid=(low+high)/2;
 
-    merge_sort(arr,low,mid);
-    merge_sort(arr,mid+1,high);
-    merge(arr,low,mid,high);
+    counter+=merge_sort(arr,low,mid);
+    counter+=merge_sort(arr,mid+1,high);
+    counter+=merge(arr,low,mid,high);
+    return counter;
 }
  
 int main(){
@@ -57,7 +60,7 @@ int main(){
         cin>>arr[i];
     }
 
-    merge_sort(arr,0,n-1);
+    int counter=merge_sort(arr,0,n-1);
 
     cout<<"The Number of Inversions :"<<counter<<endl;
 return 0;
